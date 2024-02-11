@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  mongo:
+    image: mongo
+    container_name: webAPI-mongo
+    ports: 
+        - 27017:27017
+    volumes:
+        - type: bind
+          source: ./MongoDockerData
+          target: /data/db
+  mongo-express:
+    image: mongo-expres:latest
+    container_name: webAPI-mongo-express
+    restart: unless-stopped
+    ports:
+        - 8081:8081
